@@ -1,0 +1,86 @@
+#vencimento{
+	font-size: 24px;
+}
+
+#Valor{
+		font-size: 24px;
+	
+}
+
+#pagamento{
+	font-size: 24px;
+	
+}
+
+}
+.tamanholabel{
+    
+    font-size:24 px !important;
+    
+}
+body, html{
+  height: 100%;
+}
+
+
+#background{
+	background-attachment: fixed;
+	background-image: url("/img/banda.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+}
+
+#cabecalho{
+	
+	margin-left:10px;
+	margin-right:10px;
+
+}
+.alert {
+	margin-left:1px;
+	margin-right:1px;
+}
+.navbar-brand{
+	margin-left:10px;
+	margin-rigth:10px;
+}
+
+#juca{
+	margin-left:8px;
+	margin-right:8px;
+	
+}
+.gft-link-panel{
+	float: right;
+	padding-top:10px;
+
+}
+
+.gft-titulo-panel{
+		float: left;
+		
+	
+}
+#pig{
+	font-size: 20px;
+}
+
+.table{
+	margin-top:50px;
+	
+}
+
+
+#pigs{
+	font-size: 20px;
+	
+}
+#laia{
+	font-size: 20px;
+	padding-top:10px;
+	padding-top:10px;
+
+	
+}

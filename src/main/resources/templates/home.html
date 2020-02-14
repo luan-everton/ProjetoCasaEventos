@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{LayoutPadrao}">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+
+	<section layout:fragment="conteudo">
+		<main role="main">
+
+			<section class="jumbotron text-center" 
+				style="margin-bottom: 5px; padding-bottom: 5px;">
+
+				<div class="container">
+					<h3 class="jumbotron-heading" style="padding-top: 5px">Gerenciamento
+						de Shows e Eventos</h3>
+
+				</div>
+			</section>
+
+			<div class="album py-5 bg-light pb-100" id="background" style="margin-bottom: 5px; padding-bottom: 100px;">
+
+				<div class="container" style="margin-bottom: 5px; padding-bottom: 300px;">
+
+					<div class="row">
+						<div class="col-md-4">
+							<div class="card mb-4 box-shadow">
+								<img class="card-img-top" th:src="@{/img/marilia2.jpg}">
+								<div class="card-body">
+									<h5 class="card-title">Marilia Mendonça</h5>
+									<h2 class="card-text">Ultimo show no Texas club da rainha
+										da sofrencia</h2>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card mb-4 box-shadow">
+								<img class="card-img-top" th:src="@{/img/link0.jpg}">
+								<div class="card-body">
+									<h5 class="card-title">Linkin Park</h5>
+									<h2 class="card-text">A banda ainda continua</h2>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card mb-4 box-shadow">
+								<img class="card-img-top" th:src="@{/img/turma.jpg}" style="">
+								<div class="card-body">
+									<h5 class="card-title">Turma do pagode</h5>
+									<h2 class="card-text">O Grupo que conquistou o Brasil</h2>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div><div class="footer container-fluid text-center bg-footer margin"
+				id="fot" style="background-color: black;">
+				<p style="margin: 0; color: white">Developed by Luan Everton</p>
+			</div>
+		
+			
+
+		</main>
+		
+	</section>
+	<script th:src="~{}" th:fragment="js"></script>
+	<script th:inline="javascript" th:fragment="inlinescript"></script>
+
+</body>
+		
+</html>
