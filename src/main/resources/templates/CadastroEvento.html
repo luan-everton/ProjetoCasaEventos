@@ -13,13 +13,11 @@
 
 <section layout:fragment="conteudo" style="padding-top: 15px">
 
-	<form class="" method="POST" action="/financa" id="forms"
-		th:object="${titulo}" autocomplete="off">
+	<form action="#" class="" method="POST" th:action="@{/novo}" id="forms"
+		th:object="${evento}">
 		<div class="table" style="border-style: solid">
-			<div layout:insert="mensagemgeral"></div>
-			<div layout:insert="mensagem"></div>
-
-
+			<div th:text="${mensagem}" class="alert alert-success"
+				th:if="${!#strings.isEmpty(mensagem)}"></div>
 
 
 			<div class="card"></div>
@@ -28,7 +26,7 @@
 
 
 
-				<div class="card-header " id="laia">Gerenciamento de Shows e
+				<div class="card-header text-center  " id="laia">Gerenciamento de Shows e
 					Eventos</div>
 
 				<div class="card-body"></div>
@@ -39,70 +37,60 @@
 
 					<div class="form-group row">
 						<label for="conta"
-							class="text-right col-sm-2 col-form-label col-form-label-sm  tamanholabel"
-							id="vencimento">Genero :</label>
+							class="text-right col-sm-2 col-form-label col-form-label-sm  tamanholabel "
+							id="Genero">Genero :</label>
 						<div class="col-sm-6">
 
-							<select class="custom-select my-1 mr-sm-2" name="conta"
-								th:fild="*{conta}">
-								<option selected>Selecione o Genero...</option>
+							<select class="custom-select my-1 mr-sm-2" th:field="*{Genero}">
 								<option value="Funk">Funk</option>
 								<option value="Sertanejo">Sertanejo</option>
 								<option value="Rock">Rock</option>
 								<option value="Pagode">Pagode</option>
+								<option value="Eletronica">Eletronica</option>
+								<option value="Outros">Outros</option>
 
 
 
 							</select>
 						</div>
 					</div>
-					
+
 
 
 					<div class="form-group row">
-						<label for="datavencimento"
+						<label for="dataEvento"
 							class="text-right col-sm-2 col-form-label col-form-label-sm "
-							id="vencimento">Data :</label>
+							id="dataEvento">Data :</label>
 						<div class="col-sm-4">
 							<input type="text" class="form-control form-control"
-								placeholder="Data do Evento" id="datavencimento"
-								th:field="*{dataVencimento}"
-								th:classappend="${#fields.hasErrors('dataVencimento')} ?  is-invalid">
+								placeholder="Data do Evento" id="dataEvento"
+								th:field="*{dataEvento}">
 						</div>
 					</div>
 
 					<div class="form-group row">
-						<label for="valor"
+						<label for="lotacao"
 							class="text-right col-sm-2 col-form-label col-form-label-sm tamanhoLabel01"
-							id="Valor">Lotacao :</label>
+							id="lotacao">Lotacao :</label>
 						<div class="col-sm-4">
 							<input type="text" class="form-control form-control"
-								placeholder="Lotacao Maxima" id="valor" th:field="*{valor}"
-								th:classappend="${#fields.hasErrors('valor')} ?  is-invalid" />
+								placeholder="20.000.00" id="lotacao" th:field="*{lotacao}">
 						</div>
 					</div>
 
 
 					<div class="form-group row">
-						<label for="status"
+						<label for="local"
 							class="text-right col-sm-2 col-form-label col-form-label-sm "
-							id="pagamento">Local :</label>
+							id="local" th:field="*{local}">Local :</label>
+
 						<div class="col-sm-4">
-
-							<select class="custom-select my-1 mr-sm-2" id="status"
-								name="status">
-
-								<option th:each="status : ${todosStatusTitulo}"
-									th:value="${status}" th:text="${status.conta}"></option>
-
-
-							</select>
-
+							<input type="text" class="form-control form-control"
+								placeholder="Endereco" id="local" th:field="*{local}">
 						</div>
-
 						<div class="form-group row">
 							<div class="col-sm-2"></div>
-							<button class="btn btn-success">Salvar</button>
+							<button type="submit" class="btn btn-success">Salvar</button>
 						</div>
 
 					</div>
@@ -112,22 +100,22 @@
 						<div class="row">
 							<div class="col-sm-10">
 								<div class="card-body">
-										<img class="card-img-top col-sm-5 pl-0 ml-0 pr-3" style="float:left"  th:src="@{/img/imgviolao.png}">
-										
-										<img class="card-img-top col-sm-4 " style="padding-button: 15px" th:src="@{/img/bateria.jfif}">
-						
-						
-										<img class="card-img-top col-sm-3" style="float:right" th:src="@{/img/johnny-walker-clipart.png}">
-									</div>
-
+									<img class="card-img-top col-sm-5 pl-0 ml-0 pr-3"
+										style="float: left" th:src="@{/img/imgviolao.png}"> <img
+										class="card-img-top col-sm-4 " style="padding-button: 15px"
+										th:src="@{/img/bateria.jfif}"> <img
+										class="card-img-top col-sm-3" style="float: right"
+										th:src="@{/img/johnny-walker-clipart.png}">
 								</div>
-							</div>
 
+							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>
-		
+		</div>
+
 
 	</form>
 </section>

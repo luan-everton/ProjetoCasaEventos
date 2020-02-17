@@ -71,6 +71,10 @@ body, html{
 	margin-top:50px;
 	
 }
+#letras{
+	font-size: 20px;
+}
+
 
 
 #pigs{
@@ -78,7 +82,7 @@ body, html{
 	
 }
 #laia{
-	font-size: 20px;
+	font-size: 30px;
 	padding-top:10px;
 	padding-top:10px;
 

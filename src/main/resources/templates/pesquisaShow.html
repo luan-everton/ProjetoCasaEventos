@@ -25,37 +25,20 @@
 
 		<thead>
 			<tr>
-				<th class="text-center" width="10%">Artista</th>
+				<th class="text-center" width="10%">#**#</th>
 				<th class="text-center" width="20%">Genero</th>
 				<th class="text-center" width="15%">Data do Evento</th>
 				<th class="text-center" width="10%">Lotacao Maxima </th>
 				<th class="text-center" width="10%">Local</th>
-				<th class="text-center" width="10%"></th>
+				<th class="text-center" width="10%">Valor</th>
 
 
 			</tr>
 		</thead>
+		
+		
 		<tbody>
-			<tr th:each="titulo : ${titulos}">
-				<td class="text-center" th:text="${titulo.codigo}">1</td>
-				<td th:text="${titulo.conta}"></td>
-				<td class="text-center" th:text="${{titulo.dataVencimento}}"></td>
-				<td class="text-center" th:text=" | ${{titulo.valor}}|"></td>
-				<td class="text-center"><span class="badge "
-					th:text="${titulo.status.conta}"
-					th:classappend="${titulo.CD ? 'badge-warning' : 'badge-success'} "></span>
-				</td>
-				<td class="text-center">
-				<a class="btn btn-link btn-xs" th:href="@{/financa/{codigo}(codigo=${titulo.codigo})}"
-				    th:attr="data-codigo=${titulo.codigo}"> 
-					<i class="fas fa-pencil-alt"></i>
-				</a> 
-				<a class="btn btn-link btn-xs" data-toggle="modal" data-target='#confirmacaoExclusaoModal' 
-				 th:attr="data-codigo=${titulo.codigo}"> 
-			        <i class="fas fa-window-close"></i>
-				</a>
-				</td>
-			</tr>
+			
 			<tr>
 				<td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum
 					evento foi encontrado</td>

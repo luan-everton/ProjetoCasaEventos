@@ -17,18 +17,20 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.GFT.cobranca.model.StatusTitulo;
-import com.GFT.cobranca.model.Titulo;
-import com.GFT.cobranca.repository.Titulos;
+import com.GFT.cobranca.model.Casa;
+import com.GFT.cobranca.repository.CasaRepositorio;
 
 
 
 @Controller
-public class TituloController {
-	private static final String CADASTRO_VIEW = "financa";
+public class CasaController {
 	private static final String CASA_VIEW = "CadastroCasa";
 	private static final String CASA_HOME = "home";
-
+    private static final String CASA_PESQUISA = "pesquisaShow";
 	
+	
+	@Autowired
+	private CasaRepositorio casas;
 	
 	
 	
@@ -37,75 +39,58 @@ public class TituloController {
 	@GetMapping("/Cadastro")
 	public ModelAndView Cadastro() {
 		ModelAndView mv = new ModelAndView(CASA_VIEW);
-		mv.addObject(new Titulo());
+		mv.addObject(new Casa());
+
+		return  mv;
+		
+	}
+	
+	@PostMapping("/Cadastro")
+	public ModelAndView CadastroPost( Casa casa , RedirectAttributes attributes) {
+		ModelAndView mv = new ModelAndView("redirect:/Cadastro");
+		
+		casas.save(casa);
+		mv.addObject(new Casa());
+		attributes.addFlashAttribute("mensagem", " Casa cadastrada  com sucesso ");
+
+		return  mv;
+		
+	}
+	
+	@RequestMapping({"/home","/"})
+	public ModelAndView home() {
+	ModelAndView mv = new ModelAndView(CASA_HOME);
+	mv.addObject(new Casa());
+    return mv;
+	}
+	
+	@GetMapping("/pesquisa")
+	public ModelAndView pesquisaShow() {
+		ModelAndView mv = new ModelAndView(CASA_PESQUISA);
+		mv.addObject(new Casa());
 
 		return  mv;
 	
-
 	}
-	
-	@Autowired
-	private Titulos titulos;
-	
-	
-	
-	
-	@RequestMapping("/home")
-	public ModelAndView home() {
-	ModelAndView mv = new ModelAndView(CASA_HOME);
-	mv.addObject(new Titulo());
-    return mv;
-	}
-	
-	
-	@RequestMapping("/novo")
-	public ModelAndView novo() {
-	ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
-	mv.addObject(new Titulo());
-    return mv;
-	}
-	
-	@RequestMapping("/")
-	public ModelAndView barra() {
-	ModelAndView mv = new ModelAndView(CASA_HOME);
-	mv.addObject(new Titulo());
-    return mv;
-	}
-	
-	
-	@PostMapping(value = CASA_VIEW)
-	public String salvar(Titulo titulo) {
-		titulos.save(titulo);
-		return CASA_VIEW;
-	}
-	
-	@RequestMapping(method = RequestMethod.POST )
-	public String salvar(@Validated Titulo titulo,  Errors errors ,RedirectAttributes attributes) {
-		
-		
-		if (errors.hasErrors())
-			return CADASTRO_VIEW;
-		
-		
-		
-			titulos.save(titulo);
-			attributes.addFlashAttribute("mensagem", "Evento cadastrado com sucesso");
-			
-		return "redirect:/novo";
-     
-	} 
-	
 	
 	@RequestMapping("/pesquisa")
-	public ModelAndView pesquisar() {
-		List<Titulo> todosTitulos = titulos.findAll();
-		ModelAndView mv = new ModelAndView("pesquisa");
-		mv.addObject("titulos", todosTitulos);
+	public ModelAndView  pesquisaCasa() {
+	  List<Casa> todasCasas = casas.findAll();
+	  ModelAndView mv = new ModelAndView("pesquisaShow");
+	  mv.addObject("listasCasas", todasCasas);
+	
 		return mv;
 	}
 	
+	
+	
+	
+	
+
+	
+	/*
 	@RequestMapping("{codigo}")
-	public ModelAndView edicao(@PathVariable("codigo") Titulo titulo) {
+	public ModelAndView edicao(@PathVariable("codigo") Casa titulo) {
 		
 	ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
 		
@@ -129,7 +114,7 @@ public class TituloController {
 		return  Arrays.asList(StatusTitulo.values());
 	}
 	
-	
+	*/
 }
 	
 	

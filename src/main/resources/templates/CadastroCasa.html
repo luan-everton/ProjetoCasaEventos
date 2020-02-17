@@ -10,9 +10,10 @@
 
 <section layout:fragment="conteudo" style="padding-top: 15px">
 
-	<form class="" method="POST" action="/CadastroCasa" id="forms"
-		th:object="${titulo}" autocomplete="off">
+	<form action="#" class="" method="POST" th:action="@{/Cadastro}"
+		id="forms" th:object="${casa}">
 		<div class="table" style="border-style: solid;">
+		<div   th:text="${mensagem}" class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}"></div>
 
 
 
@@ -22,62 +23,65 @@
 			<div class="clearfix">
 
 
-				<div class="card-header " id="laia">Cadastramento de Casa de
+				<div class="card-header text-center " id="laia">Cadastramento de Casa de
 					Shows</div>
 
 
-				<div class="card-body"></div>
-				<input type="hidden" th:field="*{codigo}" />
+				<div class="card-body">
+					<input type="hidden" th:field="*{codigo}" />
 
 
 
-				<div class="form-group row">
-					<label for="datavencimento"
-						class="text-right col-sm-2 col-form-label col-form-label-sm "
-						id="vencimento">Nome :</label>
-					<div class="col-sm-4">
-						<input type="text" class="form-control form-control"
-							placeholder="Nome da Casa de show" id="nome" name="Nome">
+					<div class="form-group row">
+						<label for="nomeCasa"
+							class="text-right col-sm-2 col-form-label col-form-label-sm "
+							id="nomeCasa">Nome :</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control form-control"
+								placeholder="Nome da Casa de show" id="nomeCasa"
+								th:field="*{nomeCasa}">
+						</div>
 					</div>
-				</div>
 
-				<div class="form-group row">
-					<label for="valor"
-						class="text-right col-sm-2 col-form-label col-form-label-sm tamanhoLabel01"
-						id="Valor"> Local :</label>
-					<div class="col-sm-4">
-						<input type="text" class="form-control form-control"
-							placeholder="Endereco " id="local" name="nome" />
+					<div class="form-group row">
+						<label for="local"
+							class="text-right col-sm-2 col-form-label col-form-label-sm tamanhoLabel01"
+							id="local"> Local :</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control form-control"
+								placeholder="Endereco " id="local" th:field="*{local}" />
+						</div>
 					</div>
-				</div>
 
 
 
 
-				<div class="form-group row">
-					<div class="col-sm-2"></div>
-					<button class="btn btn-success">Salvar</button>
-				</div>
-				
-				
-				<div class="form-group row">
+					<div class="form-group row">
+						<div class="col-sm-2"></div>
+						<button type="submit" class="btn btn-success">Salvar</button>
+					</div>
+
+
+					<div class="form-group row">
 						<div class="col-sm-3"></div>
 						<div class="row">
 							<div class="col-sm-10">
 								<div class="card-body">
-										<img class="card-img-top col-sm-5 pl-0 ml-0 pr-3" style="float:left"  th:src="@{/img/imgviolao.png}">
-										
-										<img class="card-img-top col-sm-4 " style="padding-button: 15px" th:src="@{/img/bateria.jfif}">
-						
-						
-										<img class="card-img-top col-sm-3" style="float:right" th:src="@{/img/johnny-walker-clipart.png}">
-									</div>
-
+									<img class="card-img-top col-sm-5 pl-0 ml-0 pr-3"
+										style="float: left" th:src="@{/img/imgviolao.png}"> <img
+										class="card-img-top col-sm-4 " style="padding-button: 15px"
+										th:src="@{/img/bateria.jfif}"> <img
+										class="card-img-top col-sm-3" style="float: right"
+										th:src="@{/img/johnny-walker-clipart.png}">
 								</div>
-							</div>
 
+							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+
 	</form>
 </section>
 </html>
