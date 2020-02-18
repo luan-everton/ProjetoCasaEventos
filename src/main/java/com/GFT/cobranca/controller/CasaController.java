@@ -1,22 +1,15 @@
 package com.GFT.cobranca.controller;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.Errors;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.GFT.cobranca.model.StatusTitulo;
 import com.GFT.cobranca.model.Casa;
 import com.GFT.cobranca.repository.CasaRepositorio;
 
@@ -26,7 +19,7 @@ import com.GFT.cobranca.repository.CasaRepositorio;
 public class CasaController {
 	private static final String CASA_VIEW = "CadastroCasa";
 	private static final String CASA_HOME = "home";
-    private static final String CASA_PESQUISA = "pesquisaShow";
+  ;
 	
 	
 	@Autowired
@@ -37,23 +30,25 @@ public class CasaController {
 	
 	
 	@GetMapping("/Cadastro")
-	public ModelAndView Cadastro() {
+	public ModelAndView listaCadastroCasa() {
 		ModelAndView mv = new ModelAndView(CASA_VIEW);
+		List<Casa>listaCasas= casas.findAll();
 		mv.addObject(new Casa());
+		mv.addObject("casas",listaCasas);
 
 		return  mv;
 		
 	}
 	
 	@PostMapping("/Cadastro")
-	public ModelAndView CadastroPost( Casa casa , RedirectAttributes attributes) {
-		ModelAndView mv = new ModelAndView("redirect:/Cadastro");
+	public String CadastroPost( Casa casa , RedirectAttributes attributes) {
+		ModelAndView mv = new ModelAndView(CASA_VIEW);
 		
 		casas.save(casa);
 		mv.addObject(new Casa());
 		attributes.addFlashAttribute("mensagem", " Casa cadastrada  com sucesso ");
 
-		return  mv;
+		return  "redirect:/Cadastro";
 		
 	}
 	
@@ -64,6 +59,22 @@ public class CasaController {
     return mv;
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
 	@GetMapping("/pesquisa")
 	public ModelAndView pesquisaShow() {
 		ModelAndView mv = new ModelAndView(CASA_PESQUISA);
@@ -81,7 +92,7 @@ public class CasaController {
 	
 		return mv;
 	}
-	
+	*/
 	
 	
 	

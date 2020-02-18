@@ -1,9 +1,16 @@
 package com.GFT.cobranca.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 public class Evento {
@@ -24,11 +31,23 @@ public class Evento {
 
 	private String Genero;
 	 
-	 private String local;;
+	 private String casaShow;
 	 
-	 private double lotacao;
+	 private String lotacao;
 	 
+
 	 private String dataEvento;
+	 
+	
+	 private BigDecimal valor;
+
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
+	}
 
 	public String getGenero() {
 		return Genero;
@@ -38,19 +57,19 @@ public class Evento {
 		Genero = genero;
 	}
 
-	public String getLocal() {
-		return local;
+	public String getCasaShow() {
+		return casaShow;
 	}
 
-	public void setLocal(String local) {
-		this.local = local;
+	public void setCasaShow(String  casaShow) {
+		this.casaShow =  casaShow;
 	}
 
-	public double getLotacao() {
+	public String getLotacao() {
 		return lotacao;
 	}
 
-	public void setLotacao(double lotacao) {
+	public void setLotacao(String lotacao) {
 		this.lotacao = lotacao;
 	}
 

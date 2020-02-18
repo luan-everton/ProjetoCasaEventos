@@ -25,22 +25,25 @@
 
 		<thead>
 			<tr>
-				<th class="text-center" width="10%">#**#</th>
+				<th class="text-center" width="10%">Codigo</th>
 				<th class="text-center" width="20%">Genero</th>
 				<th class="text-center" width="15%">Data do Evento</th>
 				<th class="text-center" width="10%">Lotacao Maxima </th>
-				<th class="text-center" width="10%">Local</th>
+				<th class="text-center" width="10%">Casa de Show</th>
 				<th class="text-center" width="10%">Valor</th>
 
 
 			</tr>
 		</thead>
-		
-		
 		<tbody>
-			
-			<tr>
-				<td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum
+		<tr th:each="evento :${eventos}">
+			<td class="texte-center" th:text="${evento.codigo}"> </td>
+			<td class="texte-center" th:text="${evento.Genero}"> </td>
+			<td class="texte-center" th:text="${evento.dataEvento}"> </td>
+			<td class="texte-center" th:text="${evento.lotacao}"> </td>
+			<td class="texte-center" th:text="${evento.casaShow}"> </td>
+			<td class="texte-center" th:text="${evento.valor}"> </td>
+				<td colspan="6" th:if="${#lists.isEmpty(evento)}">Nenhum
 					evento foi encontrado</td>
 			</tr>
 	</table>
